@@ -1,0 +1,26 @@
+<html>
+<head>
+  <title>Porkerhands</title>
+</head>
+<body>
+
+<div class="wrapper">
+  <div class="header">
+    <h1><i class="fa fa-flip-horizontal fa-hand-lizard-o"></i> Check a Porker Hand <i class="fa fa-hand-lizard-o"></i></h1>
+  </div>
+  <div class="contents">
+    <div id="form">
+      <%= form_tag("/check",:method => "post") do %>
+        <input name="cards" class="form-control mr-sm-2" type="check" placeholder="S10 H11 D12 C13 H1" aria-label="Check">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Check</button>
+        </form>
+      <% end %>
+    </div>
+  </div>
+  <div id="errors"><p><%= @errors %></p></div>
+  <div class="footer">
+    <small>©Copyright 2018 porkerhands All Rights Reserved.</small>
+  </div>
+  </div>
+</body>
+</html>
