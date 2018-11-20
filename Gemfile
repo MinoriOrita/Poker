@@ -3,8 +3,9 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.10'
-# Use sqlite3 as the database for Active Record
-gem 'pg', '~> 0.15'
+#use sqlite3 as the database for Active Record
+gem 'sqlite3'
+#gem 'pg', '~> 0.15'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -44,6 +45,7 @@ gem 'bcrypt'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'rspec-rails', '~> 3.8'
+  #
   gem 'factory_girl_rails', '~> 4.2.1'
   gem 'byebug'
 
@@ -59,7 +61,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 group :test do
   gem 'faker', '~> 1.1.2'
-  gem 'capybara', '~> 2.1.0'
+  gem 'capybara', '~> 2.2.0'
   gem 'database_cleaner', '~> 1.0.1'
   gem 'launchy', '~> 2.3.0'
 end
