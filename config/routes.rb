@@ -4,9 +4,7 @@ Rails.application.routes.draw do
   get "result"=>"hand#result"
   get "check" => "hand#check"
   post "check" => "hand#check"
-
-
-
+  mount API::Root => "/"
 
 
 end

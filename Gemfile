@@ -32,6 +32,8 @@ gem 'rails-i18n'
 
 gem 'bcrypt'
 
+gem 'grape'
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

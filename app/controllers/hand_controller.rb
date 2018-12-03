@@ -4,10 +4,19 @@ end
 
 def check  #受け取って判定して返す
   cards = params[:cards]
+  if cards == nil
+    render("top")
+  else
   hand = Hand.new(cards)
+  @errors = hand.params_style_invalid()
   render("check") and return if hand.params_style_invalid()
-  hand.validation()  #バリデーションをかける
-  @hand = hand.hand()  # 役の判定をする
+  @errors = hand.repeated_invalid()
+  render("check") and return if hand.repeated_invalid()
+  @errors = hand.validation()
+  render("check") and return if hand.validation()
+  @handAndScore = hand.hand()
+  @hand = @handAndScore[0]
+end
 end
 
 # def initialzie()
