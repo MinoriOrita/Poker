@@ -18,7 +18,11 @@
       <% end %>
     </div>
     <div id="hand"><p><%= @hand %></p></div>
-    <div id="errors"><p><%= @errors %></p></div>
+    <% if @errors != nil %>
+    <% @errors.each do |error| %>
+    <div id="errors"><p><%= error %></p></div>
+    <% end %>
+    <% end %>
     </div>
   <div class="footer">
     <small>©Copyright 2018 porkerhands All Rights Reserved.</small>
