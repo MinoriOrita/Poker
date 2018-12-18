@@ -14,7 +14,7 @@ def initialize(cards)
 end
 
 # バリデーション
-def validate()
+def validate() #エラー部分を全部出すように作る
   @errors = []
   # 何も入ってないとき
   if @cards.blank?

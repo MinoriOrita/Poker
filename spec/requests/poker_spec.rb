@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe "Poker", type: :request do
   context "エラーと正常が含まれている場合" do
-    it "エラーを出す" do
+    it "エラー・役を出す" do
         post "/api/poker", {api_cards:["S6 S7 S13 S10 S10","C13 D12 C11 H8 H7","C13 D12 C11 H8",""]}
       body = JSON.parse(response.body)
       expect(body).to eq [
@@ -24,6 +24,30 @@ RSpec.describe "Poker", type: :request do
         "error" => "カードを入力してください。"
         }
       ]
+    end
+  end
+  context "すべてエラー" do
+    it "エラーを出す" do
+      post "/api/poker", {api_cards:["　C13 D12 C11 H3 S5","C13 D12 C11 H8","","C13 D12 C11 H8 H"]}
+      body = JSON.parse(response.body)
+      expect(body).to eq [
+    {
+        "card" => "　C13 D12 C11 H3 S5",
+        "error" => "5つのカードを半角英数字を使って半角スペース区切りで入力してください。（例：S1 H3 D9 C13 S11）"
+    },
+    {
+        "card" => "C13 D12 C11 H8",
+        "error" => "5つのカードを半角英数字を使って半角スペース区切りで入力してください。（例：S1 H3 D9 C13 S11）"
+    },
+    {
+        "card" => "",
+        "error" => "カードを入力してください。"
+    },
+    {
+        "card" => "C13 D12 C11 H8 H",
+        "error" => "5番目のカード指定文字が不正です。（H）"
+    }
+]
     end
   end
   context "すべて正常で、役の強さが同じものがある場合" do
